@@ -6,10 +6,6 @@ public class Task {
         this.description=description;
     }
 
-    public  void main(int index, String name) {
-        setName(name);
-    }
-
     private  void setName(String name) {
         this.description = name;
     }
@@ -29,8 +25,7 @@ public class Task {
     public String check(){
         if (isDone()){
             return "[✓]";
-        }
-        else{
+        } else{
             return "[✗]";
         }
     }

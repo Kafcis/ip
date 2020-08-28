@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
+
+
 
 public class Greet {
 
@@ -34,18 +36,16 @@ public class Greet {
                 int value=Integer.parseInt(command[1]);
                 list[value-1].setDone(true);
                 System.out.println("Nice! I've marked this task as done: "+ list[value-1].descTask());
-                //setCheck(value-1);
-                //System.out.println(String.valueOf(value) + "." + getCheck(value-1)  + " "+list[value-1]);
                 break;
             }
             default: {
-                include(input);
+                includeTask(input);
             }
             }
         }
     }
 
-    public static void include(String args){
+    public static void includeTask(String args){
         String[] sections = args.split(" ");
         int descriptionStart = args.indexOf(" ")+1;
         String description=args;
