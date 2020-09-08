@@ -22,7 +22,7 @@ public class Task {
     public boolean isDone() {
         return isDone;
     }
-    public String check(){
+    public String check() {
         if (isDone()){
             return "[✓]";
         } else{
@@ -30,7 +30,7 @@ public class Task {
         }
     }
 
-    public String descTask(){
+    public String toString(){
         return check()+ " " + getDescription();
     }
 }

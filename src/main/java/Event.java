@@ -1,4 +1,5 @@
 public class Event extends Task{
+
     protected String at;
 
     public Event(String description, String at) {
@@ -6,8 +7,12 @@ public class Event extends Task{
         this.at = at;
     }
 
+    public String getAt() {
+        return at;
+    }
+
     @Override
-    public String descTask() {
-        return "[E]" + super.descTask() + " (at: " + at + ")";
+    public String toString() {
+        return "[E]" + super.toString() + " (at: " + at + ")";
     }
 }

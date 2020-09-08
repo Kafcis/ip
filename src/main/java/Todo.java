@@ -4,8 +4,9 @@ public class Todo extends Task{
         super(description);
     }
 
+
     @Override
-    public String descTask() {
-        return "[T]" + super.descTask();
+    public String toString() {
+        return "[T]" + super.toString();
     }
 }

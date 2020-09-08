@@ -7,8 +7,12 @@ public class Deadline extends Task{
         this.by = by;
     }
 
+    public String getBy() {
+        return by;
+    }
+
     @Override
-    public String descTask() {
-        return "[D]" + super.descTask() + " (by: " + by + ")";
+    public String toString() {
+        return "[D]" + super.toString() + " (by: " + by + ")";
     }
 }
