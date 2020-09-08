@@ -41,13 +41,11 @@ public class Greet {
     }
 
     private static void doTask(String[] command) {
-        int value;
-        try {
-            value=Integer.parseInt(command[1]);
-        } catch(IndexOutOfBoundsException e) {
+        if (command.length<2){
             System.out.println("index required");
             return;
         }
+        int value=Integer.parseInt(command[1]);
         taskList[value-1].setDone(true);
         System.out.println("Nice! I've marked this task as done: "+ taskList[value-1].toString());
     }
@@ -59,49 +57,23 @@ public class Greet {
         switch (sections[0]){
         case "deadline":{
             int dividerPosition = args.indexOf("/");
-            try {
-                description= args.substring(descriptionStart,dividerPosition-1);
-            } catch(StringIndexOutOfBoundsException e){
-                System.out.print("____________________________________________________________\n" +
-                        "☹ OOPS!!! The description of a deadline or the time cannot be empty.\n" +
-                        " ____________________________________________________________\n");
-                return;
-            }
+            description= args.substring(descriptionStart,dividerPosition-1);
             taskList[listCounter] = new Deadline(description,args.substring(dividerPosition+4));
             break;
         }
         case "todo":{
-            try {
-                description=sections[1];
-                description=args.substring(descriptionStart);
-            } catch(IndexOutOfBoundsException e){
-                System.out.print("____________________________________________________________\n" +
-                        "☹ OOPS!!! The description of a todo cannot be empty.\n" +
-                        " ____________________________________________________________\n");
-                return;
-            }
-
+            description=args.substring(descriptionStart);
             taskList[listCounter] = new Todo(description);
             break;
         }
         case "event":{
             int dividerPosition = args.indexOf("/");
-            try {
-                description= args.substring(descriptionStart,dividerPosition-1);
-            } catch(StringIndexOutOfBoundsException e){
-                System.out.print("____________________________________________________________\n" +
-                        "☹ OOPS!!! The description of an event or the time cannot be empty.\n" +
-                        " ____________________________________________________________\n");
-                return;
-            }
-
+            description= args.substring(descriptionStart,dividerPosition-1);
             taskList[listCounter] = new Event(description,args.substring(dividerPosition+4));
             break;
         }
         default: {
-            //taskList[listCounter] = new Task(args);
-            System.out.println("Retype that but correctly this time?\nThat command is not recognised\n");
-            return;
+            taskList[listCounter] = new Task(args);
         }
 
         }
