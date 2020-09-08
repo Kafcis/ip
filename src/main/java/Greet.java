@@ -62,7 +62,9 @@ public class Greet {
             try {
                 description= args.substring(descriptionStart,dividerPosition-1);
             } catch(StringIndexOutOfBoundsException e){
-                System.out.print(errorDeadline());
+                System.out.print("____________________________________________________________\n" +
+                        "☹ OOPS!!! The description of a deadline or the time cannot be empty.\n" +
+                        " ____________________________________________________________\n");
                 return;
             }
             taskList[listCounter] = new Deadline(description,args.substring(dividerPosition+4));
@@ -73,7 +75,9 @@ public class Greet {
                 description=sections[1];
                 description=args.substring(descriptionStart);
             } catch(IndexOutOfBoundsException e){
-                System.out.print(errorTodo());
+                System.out.print("____________________________________________________________\n" +
+                        "☹ OOPS!!! The description of a todo cannot be empty.\n" +
+                        " ____________________________________________________________\n");
                 return;
             }
 
@@ -85,7 +89,9 @@ public class Greet {
             try {
                 description= args.substring(descriptionStart,dividerPosition-1);
             } catch(StringIndexOutOfBoundsException e){
-                System.out.print(errorEvent());
+                System.out.print("____________________________________________________________\n" +
+                        "☹ OOPS!!! The description of an event or the time cannot be empty.\n" +
+                        " ____________________________________________________________\n");
                 return;
             }
 
@@ -102,24 +108,6 @@ public class Greet {
         System.out.println("Added: " + description);
         listCounter++;
         }
-
-    private static String errorEvent() {
-        return "____________________________________________________________\n" +
-                "☹ OOPS!!! The description of an event or the time cannot be empty.\n" +
-                " ____________________________________________________________\n";
-    }
-
-    private static String errorTodo() {
-        return "____________________________________________________________\n" +
-                "☹ OOPS!!! The description of a todo cannot be empty.\n" +
-                " ____________________________________________________________\n";
-    }
-
-    private static String errorDeadline() {
-        return "____________________________________________________________\n" +
-                "☹ OOPS!!! The description of a deadline or the time cannot be empty.\n" +
-                " ____________________________________________________________\n";
-    }
 
 }
 
