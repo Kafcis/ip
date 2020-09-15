@@ -35,6 +35,7 @@ public class Greet {
                 includeTask(input);
             }
             }
+            DataGetSet.saveData(taskList);
         }
     }
 
