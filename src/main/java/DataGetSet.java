@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public  class DataGetSet {
     public static final String filepath ="C:/Users/kafci/Documents/ip/text-ui-test/savedata.txt";
     private ArrayList<Task> savedTaskList = new ArrayList<>();
-    public static void saveData(Task[] taskList) {
+    public static void saveData(ArrayList<Task> taskList) {
         try {
             FileWriter myWriter = new FileWriter(filepath);
             myWriter.write("LOG:\n");

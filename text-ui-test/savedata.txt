@@ -1,3 +1,4 @@
 LOG:
 T | [T][✗] here
+E | [E][✗] who (at: ep)
 D | [D][✗] here (by: now)
