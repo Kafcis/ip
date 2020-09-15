@@ -1,0 +1,3 @@
+LOG:
+T | [T][✗] here
+D | [D][✗] here (by: now)
