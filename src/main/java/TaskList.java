@@ -112,4 +112,19 @@ public class TaskList {
     public static ArrayList<Task> getTaskList() {
         return taskList;
     }
+
+    public void findWord(String[] command) {
+        String word = command[1];
+        int counter = 0;
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < listCounter; i++) {
+            if (taskList.get(i).getDescription().contains(word)){
+                counter++;
+                System.out.println(counter + ". " + taskList.get(i).toString());
+            }
+
+        }
+        System.out.println("there are "+ (counter) +" tasks in the list");
+
+    }
 }

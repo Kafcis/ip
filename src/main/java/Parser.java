@@ -23,6 +23,10 @@ public class Parser {
             tasks.doDelete(command);
             break;
         }
+        case "find":{
+            tasks.findWord(command);
+            break;
+        }
         default: {
             tasks.includeTask(input);
         }
