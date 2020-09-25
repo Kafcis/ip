@@ -1,45 +1,17 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Collections;
 
-public class Greet {
-    private static int MAX_TASK_SIZE = 100;
-    private static ArrayList<Task> taskList = new ArrayList<Task>(100);
+public class TaskList {
+    private static ArrayList<Task> taskList;
     private static int listCounter = 0;
-    private static boolean isAwake =true;
-    public static void main(String[] args) {
-        System.out.println("Salutations! my name is Duke\nHow may I help you today?\n");
-        while (isAwake) {
-            Scanner in = new Scanner(System.in);
-            String input = in.nextLine();
-            String[] command = input.split(" ");
-            switch (command[0]) {
-            case "bye": {
-                System.out.println("Goodbye");
-                isAwake=false;
-                break;
-            }
-            case "list": {
-                listTask();
-                break;
-            }
-            case "done":{
-                doTask(command);
-                break;
-            }
-            case "delete":{
-                doDelete(command);
-                break;
-            }
-            default: {
-                includeTask(input);
-            }
-            }
-            DataGetSet.saveData(taskList);
-        }
+    public TaskList(ArrayList<Task> loadData) {
+        taskList=loadData;
     }
 
-    private static void doDelete(String[] command) {
+
+
+
+
+    public static void doDelete(String[] command) {
         int value;
         try {
             value=Integer.parseInt(command[1]);
@@ -52,7 +24,7 @@ public class Greet {
         listCounter--;
     }
 
-    private static void listTask() {
+    public static void listTask() {
         System.out.println("Here is the list of tasks");
         for (int i = 0; i < listCounter; i++) {
             System.out.println( i+1 + ". " + taskList.get(i).toString());
@@ -60,7 +32,7 @@ public class Greet {
         System.out.println("there are "+ (listCounter) +" tasks in the list");
     }
 
-    private static void doTask(String[] command) {
+    public static void doTask(String[] command) {
         int value;
         try {
             value=Integer.parseInt(command[1]);
@@ -87,7 +59,7 @@ public class Greet {
                         " ____________________________________________________________\n");
                 return;
             }
-            taskList.add(new Deadline(description,args.substring(dividerPosition+4)));
+            taskList.add(new Deadline(description,args.substring(dividerPosition+4),args));
             break;
         }
         case "todo":{
@@ -101,7 +73,7 @@ public class Greet {
                 return;
             }
 
-            taskList.add(new Todo(description));
+            taskList.add(new Todo(description,args));
             break;
         }
         case "event":{
@@ -115,7 +87,7 @@ public class Greet {
                 return;
             }
 
-            taskList.add(new Event(description,args.substring(dividerPosition+4)));
+            taskList.add(new Event(description,args.substring(dividerPosition+4),args));
             break;
         }
         default: {
@@ -127,14 +99,9 @@ public class Greet {
         }
         System.out.println("Added: " + description);
         listCounter++;
-        }
+    }
 
+    public static ArrayList<Task> getTaskList() {
+        return taskList;
+    }
 }
-
-
-
-
-
-
-
-

@@ -1,9 +1,11 @@
 public class Task {
     protected String description;
     protected boolean isDone=false;
+    protected String construct;
 
-    public Task(String description) {
+    public Task(String description,String construct) {
         this.description=description;
+        this.construct=construct;
     }
 
     private  void setName(String name) {
@@ -24,10 +26,14 @@ public class Task {
     }
     public String check() {
         if (isDone()){
-            return "[✓]";
+            return "[Y]";
         } else{
-            return "[✗]";
+            return "[N]";
         }
+    }
+
+    public String getConstruct() {
+        return construct;
     }
 
     public String toString(){

@@ -1,16 +1,21 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.CharBuffer;
 import java.util.ArrayList;
 
-public  class DataGetSet {
-    public static final String filepath ="C:/Users/kafci/Documents/ip/text-ui-test/savedata.txt";
+public class DataGetSet {
+    private static String filepath = "savedata.txt";
     private ArrayList<Task> savedTaskList = new ArrayList<>();
+
+
+    public static void setFilepath(String filepath) {
+        DataGetSet.filepath = filepath;
+    }
+
     public static void saveData(ArrayList<Task> taskList) {
+        int listCounter = 0;
         try {
             FileWriter myWriter = new FileWriter(filepath);
-            myWriter.write("LOG:\n");
+            myWriter.write("LOG:");
             myWriter.close();
         }catch (IOException e) {
             System.out.println("An error occurred.");
@@ -18,18 +23,18 @@ public  class DataGetSet {
         }
         for( Task record : taskList){
             String message;
-            if(record instanceof Todo){
-                message= "T | "+ record.toString();
-            }else if(record instanceof Deadline){
-                message= "D | "+ record.toString();
-            }else if(record instanceof Event){
-                message= "E | "+ record.toString();
-            }else{
-                break;
-            }
+            message=record.getConstruct();
+            listCounter++;
+
+
             try{
                 FileWriter myWriter = new FileWriter(filepath,true);
-                myWriter.write(message+"\n");
+
+                myWriter.write("\n"+message);
+                if(record.isDone()){
+                    myWriter.write("\ndone "+ listCounter);
+
+                }
                 myWriter.close();
             }catch (IOException e) {
                 System.out.println("An error occurred.");
@@ -39,4 +44,43 @@ public  class DataGetSet {
         System.out.println("Successfully wrote to the file.");
     }
 
-}
+    public static ArrayList<Task> loadData(ArrayList<Task> taskList, TaskList tasks) throws IOException{
+            try {
+                BufferedReader input = new BufferedReader( new FileReader(filepath));
+                String line;
+                while ((line = input.readLine()) != null) {
+
+                    if ((line.substring(0,4)).equals("LOG:")){
+                        System.out.println("Commencing data transfer");
+                    }else if((line.substring(0,4)).equals("done")){
+                        taskList.get(Integer.parseInt(line.substring(5))-1).setDone(true);
+                    }else{
+                        tasks.includeTask(line);
+                    }
+                }
+
+
+
+
+                System.out.println("Ending data transfer");
+
+                // Closes the reader
+                input.close();
+            }
+
+            catch(Exception e) {
+                e.getStackTrace();
+
+
+            }
+        return taskList;
+
+
+        }
+
+
+
+
+    }
+
+
