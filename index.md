@@ -1,37 +1,164 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Kafcis/ip/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Welcome to DUKE!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
-### Markdown
+## Quick start guide
+Prerequisites: JDK 11, update Intellij to the most recent version.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
+2. Set up the correct JDK version, as follows:
+   1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
+   1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
+   1. Click `OK`
+3. Import the project into Intellij as follows:
+   1. Click `Open or Import`.
+   1. Select the project directory, and click `OK`
+   1. If there are any further prompts, accept the defaults.
+4. After the importing is complete, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
 
-```markdown
-Syntax highlighted code block
+    Loading data...
+    Salutations! my name is Duke
+    How may I help you today?
+# User Guide
 
-# Header 1
-## Header 2
-### Header 3
+## Features 
 
-- Bulleted
-- List
+### Feature 1 
+Adding, deleting and marking tasks as done
+### Feature 2 
+Autosaving documents
+### Feature 3
+Three different types of tasks to choose from
 
-1. Numbered
-2. List
+# Files
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+DUKE stores your files in your project folder, which means all your files are automatically saved locally and are accessible 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## Add a todo task
+### `todo` - Include a todo in the list
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Kafcis/ip/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Type in a todo task to add and it will show you the task you have added
 
-### Support or Contact
+Example of usage: 
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+`todo (task)`
+
+Expected outcome:
+
+    todo task
+    Added: task
+    Successfully wrote to the file.`
+
+## Add a deadline task
+### `deadline` - Include a deadline in the list
+
+Type in a deadline task to add and it will show you the task you have added
+
+Example of usage: 
+
+`deadline (task) /by (time)` 
+
+Expected outcome:
+
+    deadline task /by time
+    Added: task
+    Successfully wrote to the file.
+
+
+## Add a event task
+### `event` - Include a event in the list
+
+Type in a event task to add and it will show you the task you have added
+
+Example of usage: 
+
+`event (task) /at (place)`
+
+Expected outcome:
+
+    event task /at place
+    Added: task
+    Successfully wrote to the file.
+
+
+
+## List tasks
+### `list` - Displays a list of all tasks
+
+Shows a numbered list of all tasks, together with its type, completion status, descriptor and any other relevant information in input order
+
+Example of usage: 
+
+`list`
+
+Expected outcome:
+
+    list
+    Here is the list of tasks
+    1. [T][N] task
+    2. [D][N] task (by: time)
+    3. [E][N] task (at: place)
+    there are 3 tasks in the list
+    Successfully wrote to the file.
+
+
+## Find tasks
+### `find` - Locates and displays tasks
+
+You can list all task containing the word in a similar format to the `list` command
+
+Example of usage: 
+
+`find word`
+
+Expected outcome:
+
+    find word
+    Here are the matching tasks in your list:
+    1. [T][N] word
+    there are 1 tasks in the list
+    Successfully wrote to the file.
+
+
+
+## Delete a task
+### `delete` - Remove a task from the list
+
+It permanently removes the task from the list and shifts the rest of the tasks down in the numerical order
+
+Example of usage: 
+
+`delete index`
+
+Expected outcome:
+
+    delete 1
+    Nice! I've removed this task : [T][N] task
+    Successfully wrote to the file.`
+
+
+## Mark a task as done
+### `done` - Sets the completion status as done
+
+It changes the icon in the second square brackets to Y to denote that it has been completed
+
+Example of usage: 
+
+`done index`
+
+Expected outcome:
+
+    done 3
+    Nice! I've marked this task as done: [T][Y] word
+    Successfully wrote to the file.`
+
+You can mark a task as done by typing `done"index"` where index is the number next to the task when accessed from the list command
+
+
+## Save a task list
+
+Files are saved automatically as "savedata.txt" in the project folder
+
