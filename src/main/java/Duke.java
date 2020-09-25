@@ -5,6 +5,10 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+    /**
+     * This is the Duke Class
+     * It initialises the program
+     */
 
     public Duke(String filePath){
         ui = new Ui();
