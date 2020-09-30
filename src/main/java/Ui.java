@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Ui {
     private static String input;
     /**
-     * This method "main" is used to print the greeting
+     * This method "greet" is used to print the greeting
      */
-    public static void main(String[] args) {
+    public static void greet() {
         System.out.println("Salutations! my name is Duke\nHow may I help you today?\n");
     }
     /**

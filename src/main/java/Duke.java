@@ -23,6 +23,7 @@ public class Duke {
     }
 
     public void run() {
+        ui.greet();
         while (isAwake) {
             new Parser(ui.getInput(),tasks);
             storage.saveData(tasks.getTaskList());
