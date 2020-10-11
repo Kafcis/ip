@@ -1,14 +1,14 @@
 public class Task {
     protected String description;
-    protected boolean isDone=false;
+    protected boolean isDone = false;
     protected String construct;
 
-    public Task(String description,String construct) {
-        this.description=description;
-        this.construct=construct;
+    public Task(String description, String construct) {
+        this.description = description;
+        this.construct = construct;
     }
 
-    private  void setName(String name) {
+    private void setName(String name) {
         this.description = name;
     }
 
@@ -24,10 +24,11 @@ public class Task {
     public boolean isDone() {
         return isDone;
     }
+
     public String check() {
-        if (isDone()){
+        if (isDone()) {
             return "[Y]";
-        } else{
+        } else {
             return "[N]";
         }
     }
@@ -36,7 +37,7 @@ public class Task {
         return construct;
     }
 
-    public String toString(){
-        return check()+ " " + getDescription();
+    public String toString() {
+        return check() + " " + getDescription();
     }
 }

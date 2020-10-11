@@ -19,7 +19,7 @@ public class Parser {
             tasks.doDelete(command);
             break;
         }
-        case "find":{
+        case "find": {
             tasks.findWord(command);
             break;
         }

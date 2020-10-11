@@ -1,7 +1,7 @@
-public class Todo extends Task{
+public class Todo extends Task {
 
-    public Todo(String description,String construct) {
-        super(description,construct);
+    public Todo(String description, String construct) {
+        super(description, construct);
     }
 
 

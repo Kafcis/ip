@@ -2,8 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Storage {
-    private static int MAX_TASK_SIZE = 100;
-    private static ArrayList<Task> taskList = new ArrayList<Task>(100);
+    private static ArrayList<Task> taskList = new ArrayList<Task>();
     private static String filepath = "savedata.txt";
     private static TaskList original = new TaskList(taskList);
 
@@ -11,7 +10,7 @@ public class Storage {
         DataGetSet.setFilepath(filePath);
 
         try {
-            taskList = DataGetSet.loadData(taskList,original);
+            taskList = DataGetSet.loadData(taskList, original);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -19,10 +18,10 @@ public class Storage {
     }
 
     public static ArrayList<Task> loadData() {
-        if (taskList.size()==0) {
+        if (taskList.size() == 0) {
             Ui.loading();
             try {
-                taskList = DataGetSet.loadData(taskList,original);
+                taskList = DataGetSet.loadData(taskList, original);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -30,7 +29,7 @@ public class Storage {
         return taskList;
     }
 
-    public static void saveData(ArrayList<Task> taskList){
+    public static void saveData(ArrayList<Task> taskList) {
         DataGetSet.saveData(taskList);
     }
 }

@@ -1,9 +1,9 @@
-public class Event extends Task{
+public class Event extends Task {
 
     protected String at;
 
-    public Event(String description, String at,String construct) {
-        super(description,construct);
+    public Event(String description, String at, String construct) {
+        super(description, construct);
         this.at = at;
     }
 
