@@ -22,9 +22,13 @@ public class TaskList {
             System.out.println("index required");
             return;
         }
-        System.out.println("Nice! I've removed this task : " + taskList.get(value - 1).toString());
-        taskList.remove(value - 1);
-        listCounter--;
+        try {
+            System.out.println("Nice! I've removed this task : " + taskList.get(value - 1).toString());
+            taskList.remove(value - 1);
+            listCounter--;
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Task does not exist");
+        }
     }
 
     /**
@@ -51,10 +55,13 @@ public class TaskList {
             System.out.println("index required");
             return;
         }
-        taskList.get(value - 1).setDone(true);
-        System.out.println("Nice! I've marked this task as done: " + taskList.get(value - 1).toString());
+        try {
+            taskList.get(value - 1).setDone(true);
+            System.out.println("Nice! I've marked this task as done: " + taskList.get(value - 1).toString());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Task does not exist");
+        }
     }
-
 
     /**
      * This method "includeTask" is used to add tasks from TaskList according to its type
@@ -70,48 +77,45 @@ public class TaskList {
             int dividerPosition = args.indexOf("/");
             try {
                 description = args.substring(descriptionStart, dividerPosition - 1);
+                taskList.add(new Deadline(description, args.substring(dividerPosition + 4), args));
             } catch (StringIndexOutOfBoundsException e) {
                 System.out.print("____________________________________________________________\n" +
                         "☹ OOPS!!! The description of a deadline or the time cannot be empty.\n" +
                         " ____________________________________________________________\n");
                 return;
             }
-            taskList.add(new Deadline(description, args.substring(dividerPosition + 4), args));
             break;
         }
         case "todo": {
             try {
                 description = sections[1];
                 description = args.substring(descriptionStart);
+                taskList.add(new Todo(description, args));
             } catch (IndexOutOfBoundsException e) {
                 System.out.print("____________________________________________________________\n" +
                         "☹ OOPS!!! The description of a todo cannot be empty.\n" +
                         " ____________________________________________________________\n");
                 return;
             }
-
-            taskList.add(new Todo(description, args));
             break;
         }
         case "event": {
             int dividerPosition = args.indexOf("/");
             try {
                 description = args.substring(descriptionStart, dividerPosition - 1);
+                taskList.add(new Event(description, args.substring(dividerPosition + 4), args));
             } catch (StringIndexOutOfBoundsException e) {
                 System.out.print("____________________________________________________________\n" +
                         "☹ OOPS!!! The description of an event or the time cannot be empty.\n" +
                         " ____________________________________________________________\n");
                 return;
             }
-
-            taskList.add(new Event(description, args.substring(dividerPosition + 4), args));
             break;
         }
         default: {
             System.out.println("Retype that but correctly this time?\nThat command is not recognised\n");
             return;
         }
-
         }
         System.out.println("Added: " + description);
         listCounter++;
