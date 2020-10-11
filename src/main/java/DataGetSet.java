@@ -8,10 +8,16 @@ public class DataGetSet {
     private static String filepath = "savedata.txt";
     private ArrayList<Task> savedTaskList = new ArrayList<>();
 
-
     public static void setFilepath(String filepath) {
         DataGetSet.filepath = filepath;
     }
+
+    /**
+     * This method "saveData" is used to read data from the text file
+     *
+     * @param taskList TaskList that stores the tasks of Duke
+     * @throws IOException exception thrown when there is an error writing to the text file
+     */
 
     public static void saveData(ArrayList<Task> taskList) {
         int listCounter = 0;
@@ -27,15 +33,11 @@ public class DataGetSet {
             String message;
             message = record.getConstruct();
             listCounter++;
-
-
             try {
                 FileWriter myWriter = new FileWriter(filepath, true);
-
                 myWriter.write("\n" + message);
                 if (record.isDone()) {
                     myWriter.write("\ndone " + listCounter);
-
                 }
                 myWriter.close();
             } catch (IOException e) {
@@ -46,6 +48,13 @@ public class DataGetSet {
         System.out.println("Successfully wrote to the file.");
     }
 
+    /**
+     * This method "loadData" is used to read data from the text file
+     *
+     * @param taskList TaskList that stores the tasks of Duke and tasks TaskList that uses TaskList methods
+     * @return taskList with the tasks from the save file
+     * @throws IOException exception thrown when there is an error reading the text file
+     */
     public static ArrayList<Task> loadData(ArrayList<Task> taskList, TaskList tasks) throws IOException {
         try {
             BufferedReader input = new BufferedReader(new FileReader(filepath));
@@ -60,23 +69,13 @@ public class DataGetSet {
                     tasks.includeTask(line);
                 }
             }
-
-
             System.out.println("Ending data transfer");
-
-            // Closes the reader
             input.close();
         } catch (Exception e) {
             e.getStackTrace();
-
-
         }
         return taskList;
-
-
     }
-
-
 }
 
 

@@ -8,6 +8,12 @@ public class TaskList {
         taskList = loadData;
     }
 
+    /**
+     * This method "doDelete" is used to remove tasks from TaskList
+     *
+     * @param command that is used to store information on what to delete
+     */
+
     public static void doDelete(String[] command) {
         int value;
         try {
@@ -21,6 +27,9 @@ public class TaskList {
         listCounter--;
     }
 
+    /**
+     * This method "listTask" is used to print tasks from TaskList
+     */
     public static void listTask() {
         System.out.println("Here is the list of tasks");
         for (int i = 0; i < listCounter; i++) {
@@ -29,6 +38,11 @@ public class TaskList {
         System.out.println("there are " + (listCounter) + " tasks in the list");
     }
 
+    /**
+     * This method "doTask" is used to mark tasks from TaskList as done
+     *
+     * @param command that is used to store information on what to mark as done
+     */
     public static void doTask(String[] command) {
         int value;
         try {
@@ -41,6 +55,12 @@ public class TaskList {
         System.out.println("Nice! I've marked this task as done: " + taskList.get(value - 1).toString());
     }
 
+
+    /**
+     * This method "includeTask" is used to add tasks from TaskList according to its type
+     *
+     * @param args is a string that contains information about the type of task it is
+     */
     public static void includeTask(String args) {
         String[] sections = args.split(" ");
         int descriptionStart = args.indexOf(" ") + 1;
@@ -88,7 +108,6 @@ public class TaskList {
             break;
         }
         default: {
-            //taskList[listCounter] = new Task(args);
             System.out.println("Retype that but correctly this time?\nThat command is not recognised\n");
             return;
         }
@@ -98,6 +117,9 @@ public class TaskList {
         listCounter++;
     }
 
+    /**
+     * This method "getTaskList" is used to save tasks from TaskList to Storage
+     */
     public static ArrayList<Task> getTaskList() {
         return taskList;
     }

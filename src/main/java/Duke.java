@@ -5,6 +5,10 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+    /**
+     * This is the Duke Class
+     * It initialises the program
+     */
 
     public Duke(String filePath) {
         ui = new Ui();
@@ -14,19 +18,15 @@ public class Duke {
             e.printStackTrace();
         }
         tasks = new TaskList(storage.loadData());
-
-
     }
 
     public void run() {
+        ui.greet();
         while (isAwake) {
             new Parser(ui.getInput(), tasks);
             storage.saveData(tasks.getTaskList());
-
-
         }
         Ui.sayGoodbye();
-
     }
 
     public static void main(String[] args) {

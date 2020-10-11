@@ -1,4 +1,8 @@
 public class Parser {
+    /**
+     * This is the Parser Class
+     * It interprets user commands
+     */
 
     public Parser(String input, TaskList tasks) {
         String[] command = input.split(" ");
