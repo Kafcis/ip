@@ -11,20 +11,23 @@ public class Duke {
      */
 
     public Duke(String filePath) {
-        ui = new Ui();
+        this.ui = new Ui();
         try {
-            storage = new Storage(filePath);
+            this.storage = new Storage(filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        tasks = new TaskList(storage.loadData());
+        this.tasks = new TaskList(storage.loadData());
     }
 
     public void run() {
         ui.greet();
         while (isAwake) {
+            int taskSize = tasks.getListCounter();
             new Parser(ui.getInput(), tasks);
-            storage.saveData(tasks.getTaskList());
+            if(tasks.getListCounter()>taskSize) {
+                storage.saveData(tasks.getTaskList());
+            }
         }
         Ui.sayGoodbye();
     }

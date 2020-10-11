@@ -1,5 +1,11 @@
 LOG:
 deadline task /by time
-event task /at place
 todo word
-done 3
+done 2
+todo hellp
+todo here
+todo hepp
+deadline here /at sd
+todo hee
+deadline ssd /by sd
+event sd /at sds

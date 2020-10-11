@@ -26,7 +26,7 @@ public class TaskList {
             System.out.println("Nice! I've removed this task : " + taskList.get(value - 1).toString());
             taskList.remove(value - 1);
             listCounter--;
-        } catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Task does not exist");
         }
     }
@@ -129,7 +129,15 @@ public class TaskList {
     }
 
     public void findWord(String[] command) {
-        String word = command[1];
+        String word;
+        try {
+            word = command[1];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("____________________________________________________________\n" +
+                    "☹ OOPS!!! The space for the word cannot be empty.\n" +
+                    " ____________________________________________________________\n");
+            return;
+        }
         int counter = 0;
         System.out.println("Here are the matching tasks in your list:");
         for (int i = 0; i < listCounter; i++) {
@@ -141,5 +149,9 @@ public class TaskList {
         }
         System.out.println("there are " + (counter) + " tasks in the list");
 
+    }
+
+    public static int getListCounter() {
+        return listCounter;
     }
 }
