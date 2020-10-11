@@ -1,4 +1,5 @@
 LOG:
-todo here
-deadline hehe /by asa
-done 2
+deadline task /by time
+event task /at place
+todo word
+done 3
