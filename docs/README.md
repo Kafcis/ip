@@ -90,7 +90,7 @@ You can list all task containing the word in a similar format to the `list` comm
 
 Example of usage: 
 
-`find word`
+`find (word)`
 
 Expected outcome:
 
@@ -109,13 +109,13 @@ It permanently removes the task from the list and shifts the rest of the tasks d
 
 Example of usage: 
 
-`delete index`
+`delete (index)`
 
 Expected outcome:
 
     delete 1
     Nice! I've removed this task : [T][N] task
-    Successfully wrote to the file.`
+    Successfully wrote to the file.
 
 
 ## Mark a task as done
@@ -125,15 +125,26 @@ It changes the icon in the second square brackets to Y to denote that it has bee
 
 Example of usage: 
 
-`done index`
+`done (index)`
 
 Expected outcome:
 
     done 3
     Nice! I've marked this task as done: [T][Y] word
-    Successfully wrote to the file.`
+    Successfully wrote to the file.
 
 You can mark a task as done by typing `done"index"` where index is the number next to the task when accessed from the list command
+
+## Close the program
+### `bye` - Closes the program
+
+Example of usage:
+
+`bye`
+
+Expected outcome:
+
+    Goodbye
 
 
 ## Save a task list
